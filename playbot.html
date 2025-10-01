@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAYBOT - Театр ETERNITY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a4e 0%, #0f0f2e 100%);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .theatre-name {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #d4af37;
+            text-transform: uppercase;
+        }
+
+        .poster-section {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .poster-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+            aspect-ratio: 1648 / 2384;
+        }
+
+        .poster-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .show-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 25px 20px 25px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-grid {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            text-align: center;
+        }
+
+        .info-item {
+            background: rgba(26, 26, 78, 0.3);
+            padding: 18px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .buttons-section {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #0a0a0a;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+        }
+
+        .team-list {
+            background: rgba(26, 26, 78, 0.2);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .team-item {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .team-role {
+            color: #d4af37;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .team-name {
+            color: #ffffff;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            border-top: 1px solid #d4af37;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .show-title {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .buttons-section {
+                padding: 0 15px;
+            }
+
+            .poster-section {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="theatre-name">DRAMAN запрошує</div>
+    </header>
+
+    <div class="poster-section">
+        <div class="poster-wrapper">
+            <img src="images/posters/playbot.jpg" alt="PLAYBOT">
+        </div>
+    </div>
+
+    <h1 class="show-title">PLAYBOT</h1>
+
+    <div class="info-grid">
+        <div class="info-item">
+            <div class="info-label">Театр</div>
+            <div class="info-value">ETERNITY</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Локація</div>
+            <div class="info-value">МКЦ ім. І. Козловського</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Адреса</div>
+            <div class="info-value">м. Київ, вул. Хрещатик, 50Б</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Дата</div>
+            <div class="info-value">5 жовтня 2025</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Початок</div>
+            <div class="info-value">17:00</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Тривалість</div>
+            <div class="info-value">2 години (з антрактом)</div>
+        </div>
+        <div class="info-item">
+            <div class="info-label">Вік</div>
+            <div class="info-value">18+</div>
+        </div>
+    </div>
+
+    <div class="buttons-section">
+        <a href="https://widget.kontramarka.ua/uk/widget512site12757/widget/event/153193?utm_referrer=kontramarka.ua/uk/playbot-107987.html&siteShowId=107987&siteEventId=251226" target="_blank" class="btn btn-primary">Вибір місця</a>
+        <a href="https://t.me/dramaninfo" target="_blank" class="btn btn-secondary">Купити без націнки</a>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">Про виставу</h2>
+        <div class="description">
+            <p style="font-size: 1.2rem; font-weight: 600; color: #d4af37; margin-bottom: 15px;">Фантастичний комедійний трилер 18+</p>
+            
+            <p style="font-size: 1.15rem; font-style: italic; margin-bottom: 20px;">Коли робот починає відчувати…</p>
+            
+            <p>У майбутньому, після катастрофи, чоловік живе в бункері з ідеальною робо-компаньйонкою. Порядок. Комфорт. Усі бажання — на замовлення. Рай?</p>
+            
+            <p>Але машина починає мислити і… бажати. Любов, бунт, пробудження і трохи сексуального хаосу.</p>
+            
+            <p style="font-weight: 600; margin-top: 25px; margin-bottom: 15px;">Що вас чекає:</p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #d4af37;">▪</span> провокаційна історія про кохання людини і ШІ
+                </li>
+                <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #d4af37;">▪</span> еротика, гумор, абсурд і несподівані повороти
+                </li>
+                <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #d4af37;">▪</span> шалена енергія акторів та візуальний перформанс
+                </li>
+                <li style="margin-bottom: 10px; padding-left: 20px; position: relative;">
+                    <span style="position: absolute; left: 0; color: #d4af37;">▪</span> атмосфера майбутнього: кіберпанк, сюрреалізм, емоційна напруга
+                </li>
+            </ul>
+            
+            <p style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-left: 4px solid #d4af37; margin-top: 30px; font-weight: 600;">
+                УВАГА: вистава містить відверті сцени, потужні емоційні контрасти та сильні візуальні ефекти. Не рекомендовано людям із надмірною вірою в штучний інтелект.
+            </p>
+        </div>
+
+        <h2 class="section-title">Команда</h2>
+        <div class="team-list">
+            <div class="team-item">
+                <span class="team-role">Автори, режисери:</span>
+                <span class="team-name">Ніко Малік, Катерина Плющ</span>
+            </div>
+            <div class="team-item">
+                <span class="team-role">У ролях:</span>
+                <span class="team-name">Катерина Плющ, Ніко Малік, Євгеній Калінін</span>
+            </div>
+            <div class="team-item" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(212, 175, 55, 0.3);">
+                <span class="team-role">Організатор:</span>
+                <span class="team-name">DRAMAN Theatres Trust</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div style="color: #a0a0a0; font-size: 0.9rem;">
+                Telegram: <a href="https://t.me/dramaninfo" style="color: #d4af37; text-decoration: none;">@dramaninfo</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
